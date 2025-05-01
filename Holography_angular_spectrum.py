@@ -86,7 +86,7 @@ L, g1 = compute_convolution_parameters()
 print(f"Average iteration time for convolution parameters computation: {time_convolution_params / 100:.6f} seconds")
 
 def convolution_method():
-    field = np.multiply(hologram, L) #hologram multiplied by conjugate field
+    field = ne.evaluate("hologram * L") #hologram multiplied by conjugate field
     return np.fft.fftshift(np.fft.ifft2(np.multiply(np.fft.fft2(field),g1 )))
 
 time_convolution = timeit.timeit(convolution_method, number=100)

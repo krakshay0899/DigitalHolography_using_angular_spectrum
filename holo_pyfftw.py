@@ -88,7 +88,7 @@ def compute_convolution_parameters():
 L, g1 = compute_convolution_parameters()
 
 def convolution_method():
-    field = hologram * L
+    field = ne.evaluate("hologram * L")
     fft_field = pyfftw.interfaces.numpy_fft.fft2(field, threads=os.cpu_count())
     return pyfftw.interfaces.numpy_fft.ifftshift(pyfftw.interfaces.numpy_fft.ifft2(fft_field * g1, threads=os.cpu_count()))
 
